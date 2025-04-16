@@ -1,3 +1,5 @@
+from typing import AsyncGenerator
+
 from sqlalchemy.orm import DeclarativeBase
 from sqlalchemy.ext.asyncio import async_sessionmaker, create_async_engine, AsyncSession
 
@@ -15,6 +17,6 @@ async def create_tables() -> None:
         await conn.run_sync(Base.metadata.create_all)
 
 
-async def get_db() -> AsyncSession:
+async def get_db() -> AsyncGenerator[AsyncSession, None]:
     async with session() as conn:
         yield conn
