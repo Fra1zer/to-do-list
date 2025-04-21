@@ -14,4 +14,6 @@ async def main():
 
 
 if __name__ == '__main__':
+    from uvicorn import run
+    run("main:app", reload = True)
     asyncio.run(main())
