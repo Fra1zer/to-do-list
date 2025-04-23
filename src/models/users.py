@@ -10,4 +10,4 @@ class User(Base):
     id = Column(Integer, autoincrement=True, primary_key=True)
     name = Column(String)
 
-    tasks = relationship('Task', back_populates='user', uselist=True)
+    tasks = relationship('Task', back_populates='user', uselist=True, cascade="all, delete-orphan",)
